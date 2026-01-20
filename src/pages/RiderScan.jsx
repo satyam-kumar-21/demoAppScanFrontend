@@ -63,7 +63,7 @@ const RiderScan = () => {
                         };
 
                         // Assuming backend runs on localhost:5000
-                        const response = await axios.post('http://localhost:5000/api/scan', payload);
+                        const response = await axios.post('https://demo-app-backend-seven.vercel.app/api/scan', payload);
 
                         if (response.data.success) {
                               setStatus('success');
