@@ -1,0 +1,181 @@
+:root {
+  --primary: #00CCBC; /* Deliveroo/UberEats vibe */
+  --primary-dark: #00a094;
+  --bg: #f8f9fa;
+  --text: #333;
+  --card-bg: #ffffff;
+  --shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+.app-container {
+  max-width: 600px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: white;
+  box-shadow: 0 0 20px rgba(0,0,0,0.05);
+}
+
+/* Navbar */
+.navbar {
+  background: var(--primary);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.nav-brand {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Page Config */
+.page-container {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+/* Inputs */
+.input-group {
+  margin: 1.5rem 0;
+  text-align: left;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+
+/* QR Stylings */
+.qr-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 2px dashed #ddd;
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.qr-box {
+  background: white;
+  padding: 10px;
+}
+
+/* Home Screen */
+.home-screen {
+  padding: 2rem;
+  text-align: center;
+}
+
+.role-selection {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.card {
+  background: white;
+  border: 1px solid #eee;
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s;
+}
+
+.card:active {
+  transform: scale(0.98);
+}
+
+.card h2 {
+  margin: 0 0 0.5rem 0;
+  color: var(--primary);
+}
+
+/* Rider Scanner */
+.rider-header {
+  margin-bottom: 20px;
+}
+
+.rider-info {
+  display: flex;
+  justify-content: space-between;
+  background: #f0f0f0;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.scanner-box {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+/* Status Boxes */
+.status-box {
+  padding: 2rem;
+  border-radius: 12px;
+  margin-top: 1rem;
+  animation: fadeIn 0.3s;
+}
+
+.status-box.success { background: #d4edda; color: #155724; }
+.status-box.error { background: #f8d7da; color: #721c24; }
+.status-box.processing { background: #e2e3e5; }
+
+.icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.btn-primary, .btn-secondary {
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: white;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
