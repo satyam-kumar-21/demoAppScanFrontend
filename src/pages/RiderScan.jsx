@@ -63,7 +63,7 @@ const RiderScan = () => {
                               location
                         };
 
-                        // Using localhost as we just updated the local backend
+                        // Using Vercel Backend as requested
                         const response = await axios.post('https://demo-app-backend-seven.vercel.app/api/scan', payload);
 
                         if (response.data.success) {
