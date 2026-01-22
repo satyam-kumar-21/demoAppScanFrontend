@@ -4,6 +4,7 @@ import axios from 'axios';
 
 const RiderScan = () => {
       const [scanResult, setScanResult] = useState(null);
+      const [orderDetails, setOrderDetails] = useState(null);
       const [status, setStatus] = useState('idle'); // idle, scanning, success, error
       const [errorMsg, setErrorMsg] = useState('');
 
@@ -62,10 +63,11 @@ const RiderScan = () => {
                               location
                         };
 
-                        // Assuming backend runs on localhost:5000
-                        const response = await axios.post('https://demo-app-backend-seven.vercel.app/api/scan', payload);
+                        // Using localhost as we just updated the local backend
+                        const response = await axios.post('http://localhost:5000/api/scan', payload);
 
                         if (response.data.success) {
+                              setOrderDetails(response.data.orderDetails);
                               setStatus('success');
                         } else {
                               setStatus('error');
@@ -107,11 +109,74 @@ const RiderScan = () => {
                         </div>
                   )}
 
-                  {status === 'success' && (
+                  {status === 'success' && orderDetails && (
+                        <div className="order-details-container">
+                              <div className="status-header">
+                                    <div className="icon">✅</div>
+                                    <h3>Pickup Verified!</h3>
+                                    <p className="merchant-name">Restaurant: {scanResult}</p>
+                              </div>
+
+                              <div className="card customer-card">
+                                    <h4>Customer Details</h4>
+                                    <div className="info-row">
+                                          <span className="label">Name:</span>
+                                          <span className="value">{orderDetails.customer.name}</span>
+                                    </div>
+                                    <div className="info-row">
+                                          <span className="label">Phone:</span>
+                                          <span className="value">{orderDetails.customer.phone}</span>
+                                    </div>
+                                    <div className="info-row">
+                                          <span className="label">Address:</span>
+                                          <span className="value address">{orderDetails.customer.address}</span>
+                                    </div>
+                              </div>
+
+                              <div className="card order-card">
+                                    <h4>Order Summary</h4>
+                                    <ul className="item-list">
+                                          {orderDetails.items.map((item, index) => (
+                                                <li key={index} className="item-row">
+                                                      <span className="item-qty">{item.quantity}x</span>
+                                                      <span className="item-name">{item.name}</span>
+                                                      <span className="item-price">₹{item.price * item.quantity}</span>
+                                                </li>
+                                          ))}
+                                    </ul>
+                                    <div className="bill-summary">
+                                          <div className="bill-row">
+                                                <span>Subtotal</span>
+                                                <span>₹{orderDetails.billDetails.subtotal}</span>
+                                          </div>
+                                          <div className="bill-row">
+                                                <span>Tax</span>
+                                                <span>₹{orderDetails.billDetails.tax}</span>
+                                          </div>
+                                          <div className="bill-row total">
+                                                <span>Total to Pay</span>
+                                                <span>₹{orderDetails.billDetails.total}</span>
+                                          </div>
+                                    </div>
+                                    <div className="payment-status">
+                                          Status: {orderDetails.paymentStatus}
+                                    </div>
+                              </div>
+
+                              <div className="delivery-action">
+                                    <button className="btn-primary" onClick={() => alert('Navigation Started!')}>
+                                          Start Delivery 🚀
+                                    </button>
+                                    <button onClick={resetScan} className="btn-secondary">Scan Next Order</button>
+                              </div>
+                        </div>
+                  )}
+
+                  {status === 'success' && !orderDetails && (
                         <div className="status-box success">
+                              {/* Fallback if no details */}
                               <div className="icon">✅</div>
-                              <h3>Pickup Confirmed!</h3>
-                              <p>Restaurant: {scanResult}</p>
+                              <h3>Pickup Verified!</h3>
                               <button onClick={resetScan} className="btn-primary">Scan Next Order</button>
                         </div>
                   )}

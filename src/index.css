@@ -1,10 +1,11 @@
 :root {
-  --primary: #00CCBC; /* Deliveroo/UberEats vibe */
+  --primary: #00CCBC;
+  /* Deliveroo/UberEats vibe */
   --primary-dark: #00a094;
   --bg: #f8f9fa;
   --text: #333;
   --card-bg: #ffffff;
-  --shadow: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 body {
@@ -19,7 +20,7 @@ body {
   margin: 0 auto;
   min-height: 100vh;
   background: white;
-  box-shadow: 0 0 20px rgba(0,0,0,0.05);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
 }
 
 /* Navbar */
@@ -146,16 +147,27 @@ body {
   animation: fadeIn 0.3s;
 }
 
-.status-box.success { background: #d4edda; color: #155724; }
-.status-box.error { background: #f8d7da; color: #721c24; }
-.status-box.processing { background: #e2e3e5; }
+.status-box.success {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status-box.error {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.status-box.processing {
+  background: #e2e3e5;
+}
 
 .icon {
   font-size: 3rem;
   margin-bottom: 1rem;
 }
 
-.btn-primary, .btn-secondary {
+.btn-primary,
+.btn-secondary {
   border: none;
   padding: 12px 24px;
   border-radius: 8px;
@@ -176,6 +188,130 @@ body {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Order Details Styles */
+.order-details-container {
+  animation: fadeIn 0.4s ease-out;
+}
+
+.status-header {
+  text-align: center;
+  margin-bottom: 20px;
+  background: #d4edda;
+  color: #155724;
+  padding: 15px;
+  border-radius: 12px;
+}
+
+.status-header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.merchant-name {
+  margin: 5px 0 0;
+  opacity: 0.9;
+}
+
+.customer-card h4,
+.order-card h4 {
+  margin-top: 0;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  color: #555;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.info-row .label {
+  font-weight: 600;
+  color: #777;
+}
+
+.info-row .value {
+  text-align: right;
+  max-width: 60%;
+}
+
+.info-row .address {
+  font-size: 0.9rem;
+}
+
+.item-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 15px 0;
+}
+
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px dashed #eee;
+}
+
+.item-qty {
+  font-weight: bold;
+  margin-right: 10px;
+  color: var(--primary);
+}
+
+.item-name {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.item-price {
+  font-weight: 600;
+}
+
+.bill-summary {
+  background: #f8f9fa;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.bill-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+.bill-row.total {
+  font-weight: bold;
+  font-size: 1.1rem;
+  border-top: 1px solid #ddd;
+  padding-top: 5px;
+  margin-top: 5px;
+}
+
+.payment-status {
+  text-align: center;
+  margin-top: 10px;
+  background: #e2e6ea;
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.delivery-action {
+  margin-top: 20px;
 }
